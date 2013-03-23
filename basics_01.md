@@ -31,11 +31,14 @@ Core modules are built in.
   * globals: console, process args, env variables.
 
 ### http.createServer([requestListener])
-Creates an HTTP server. Takes a function(req,res) which will be invoked on each request.
+Creates an [HTTP server] (http://nodejs.org/api/http.html#http_class_http_server). Takes a function(req,res) which will be invoked on each request.
 * _req, res_ - HTTP request/response object. 
 * _res.writeHead_ - Write all HTTP headers
 * _res.end_ - Write to the body and end.
-* _listen_ - listen on a port. Can also listen to named pipes.
+
+### server.listen(port)
+Listen on a port. 
+* port can be either a port number or a named pipe
 
 # Callbacks
 * node is designed for writing non-blocking code.
