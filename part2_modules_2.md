@@ -77,6 +77,10 @@ lists all modules that were installed for the app.
 ## npm view <module>
 displays details for a module in the main npm registry.
 
+```javascript
+npm view winston
+```
+
 ## npm cache
 npm maintains a cache of all module that are installed
 * add: add a module to the cache
