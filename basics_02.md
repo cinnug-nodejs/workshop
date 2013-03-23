@@ -14,7 +14,6 @@ function onGet(res) {
     console.log('data:' + chunk);
   });
 }
-
 ```
 
 ### http.get(options, callback)
