@@ -1,6 +1,6 @@
 # Summary of the module
 * What is a node module
-* npm
+* npm / the npm registry
 * node-uuid
 * request
 * express
