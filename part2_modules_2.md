@@ -22,9 +22,26 @@ package.json plays a special role with npm in that it also contains dependent mo
   }
 }
 ```
-
 * Notice that dependencies can specify matching criteria based on semver.
 * Dependencies can also point directly to a tarball.
+
+### dev dependencies
+package.json can contain dependencies that are only used by developers that are actually developing the module itself. 
+
+```javascript
+{
+  "name": "foo",
+  "dependencies": 
+  {
+    "foo: "*"
+  },
+  "devDependenceis":
+  {
+    "bar": "*"
+  }
+}
+```
+* dev dependencies are only installed if the --development switch is passed to npm install or if it is globally configured.
 
 ## npm install
 installs one or more modules.
@@ -45,6 +62,11 @@ if no module names are passed, npm will look for package.json to install modules
 node modules can be global. global modules are command line tools OR modules those tools depend on. 
 * On *nix global modules are installed in /usr/local. 
 * On windows module are stored under AppData.
+* Global modules are never resolved by applications or modules that are not global themselves.
+
+```text
+npm install -g express
+```
 
 
 
