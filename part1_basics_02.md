@@ -65,7 +65,7 @@ req.end();
 * Many objects in node emit events, they are called _Emitters_
 * Emitters are used for notifications vs callbacks which ae used for completion of executing async code.
 * To add a listener use the on() method
-* To remote listeners to an event use the removeListener method 
+* To remove listeners to an event use the removeListener method 
 
 ```javascript
 req.on('error', function(e) {
