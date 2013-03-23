@@ -56,7 +56,9 @@ if no module names are passed, npm will look for package.json to install modules
 
 ### common parameters
 * --save, -s: update the package.json with any modules that were installed
-* -g: install a module globally. 
+* --global, -g: install a module globally. 
+* --production: install only dependencies.
+* --development: install dependencies and dev dependencies.
 
 ### global modules
 node modules can be global. global modules are command line tools OR modules those tools depend on. 
@@ -80,6 +82,8 @@ displays details for a module in the main npm registry.
 ```javascript
 npm view winston
 ```
+
+## npm search <module>
 
 ## npm cache
 npm maintains a cache of all module that are installed
