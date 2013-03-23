@@ -3,7 +3,7 @@
 ```javascript
 var http = require('http');
 
-req = http.get({host:'nodejs.org', path:'/api'},onGet);
+req = http.get('nodejs.org/api', onGet);
 
 function onGet(res) {
   res.on('data', function(chunk) {
@@ -17,9 +17,11 @@ function onGet(res) {
 
 ```
 
-### http.get
+### http.get(options, callback)
 Convenience method for doing a GET request.
 
+* options - a uri or a hash specfying params like host, method, headers, etc.
+* res - the response. 
 * both req and res expose events. (http://nodejs.org/api/http.html#http_http_get_options_callback)
 * _data_ is called when a chunk of data is received
 * _error_ is called if any error error occurs whether DNS resolution, TCP level errors, or actual HTTP errors.
