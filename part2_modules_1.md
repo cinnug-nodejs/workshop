@@ -30,7 +30,7 @@ console.log( 'The area of a circle of radius 4 is '
 
 ## How modules are resolved?
 * If the path is specified wih a relative path it will be loaded directly. 
-* If it is not relative, node walks the file system relative to the current path to resolve modules.
+* If it is not relative, node walks the file system relative to the current path looking for node_modules folders to resolve modules.
 
 Below is the algorithm for resolving non-relative modules. Assume the /root/app/server.js had a require('circle.js'), then node would look in the following folders.
 
@@ -40,5 +40,25 @@ Below is the algorithm for resolving non-relative modules. Assume the /root/app/
 
 ## Side by side versioning
 This model allows different modules to be loaded side by side in the same process.
+
+## Module as folders and package.json
+By default modules are just loose files however modules can also be folders.
+
+### package.json
+When node looks in a module folder it will look in a package.json file if present. This file can specify the main file for the module.
+
+For example the package.json file specifies the module name is circle and the main file to be loaded is /lib/circle.js. 
+
+```javascript
+//package.json
+{ "name" : "cicle",
+  "main" : "./lib/circle.js" }
+```
+
+thus assuming circle was in /root/app/node_modules/circle/lib then doing require("circle") in /root/app/server.js would load circle.js.
+
+### default
+If no package.json is found, then by default node will look for an index.js or index.node in the same folder.
+
 
 
