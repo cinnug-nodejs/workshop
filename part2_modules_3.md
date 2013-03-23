@@ -98,7 +98,9 @@ io.sockets.on('connection', function (socket) {
 * socket.emit - sends a message to the client
 * socket.on - subscribe to specific events from the client
 * sockets.on - subscribe to general events
+```
 
+```jade
 //index.jade
 doctype 5
 html
