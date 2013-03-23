@@ -30,8 +30,8 @@ Core modules are built in.
   * child_process: spawn and manage child processes
   * globals: console, process args, env variables.
 
-### http.createServer
-Creates an HTTP server. Takes a callback which will be invoked on each request.
+### http.createServer([requestListener])
+Creates an HTTP server. Takes a function(req,res) which will be invoked on each request.
 * _req, res_ - HTTP request/response object. 
 * _res.writeHead_ - Write all HTTP headers
 * _res.end_ - Write to the body and end.
