@@ -59,8 +59,7 @@ fs.createReadStream('./file2.txt', {encoding:'utf8',
 * _error_ fires for any I/O related errors that occur
 
 # Streams
-
-* Streams are useful when there is a continuous flow of data in/out.
+[Streams](http://nodejs.org/api/stream.html) are used when there is a continuous flow of data in/out.
 * A stream is an abstract emitter interface in node that is implemented by various objects like an HTTP Request, Files, Sockets, etc.
 * Streams wrap a file descriptor
 * node supports both readable and writable streams
@@ -97,7 +96,6 @@ A readable stream can be piped to a writeable stream.
 
 ```javascript
 var https = require('https');
-var util = require('util');
 
 req = https.get('https://api.github.com/users/glennblock/repos',onGet); 
 
@@ -106,6 +104,14 @@ function onGet(res) {
 }
 
 req.on('error', function(e) {
-	console.log('problem with request: ' + e.message);
+  console.log('problem with request: ' + e.message);
 });
 ```
+
+### process.stdout
+Standard output stream for the process
+
+### readable.pipe(destination, [options])
+* destination: must be a writeable stream.
+* options
+  * end: indicates end should be called on the destination stream. Default is true.
