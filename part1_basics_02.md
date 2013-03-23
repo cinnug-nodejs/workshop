@@ -27,6 +27,7 @@ Convenience method for doing a GET request.
 # Making an HTTP POST request
 
 ```javascript
+var http=require('http');
 var options = {
   hostname: 'www.google.com',
   port: 80,
