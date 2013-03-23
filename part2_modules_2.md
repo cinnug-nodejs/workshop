@@ -68,6 +68,19 @@ node modules can be global. global modules are command line tools OR modules tho
 npm install -g express
 ```
 
+## npm ls
+lists all modules that were installed for the app.
+
+## npm view <module>
+displays details for a module in the main npm registry.
+
+## npm cache
+npm maintains a cache of all module that are installed
+* add: add a module to the cache
+* clean: remove either the specific module or all modules
+* ls: list the modules in the cache.
+
+
 
 
 
