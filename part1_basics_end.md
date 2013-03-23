@@ -1,4 +1,4 @@
-# Summary of what you learned
+# Summary of the module
 * What node is
 * Installing node
 * Loading built in modules
