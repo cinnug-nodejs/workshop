@@ -23,6 +23,29 @@ package.json plays a special role with npm in that it also contains dependent mo
 }
 ```
 
+* Notice that dependencies can specify matching criteria based on semver.
+* Dependencies can also point directly to a tarball.
 
-## Common npm commands
-install: install a module. 
+## npm install
+installs one or more modules.
+
+one or more module names can be passed at the command line i.e.
+
+```text
+npm install express socket.io
+```
+
+if no module names are passed, npm will look for package.json to install modules specified in the dependencies.
+
+### common parameters
+* --save, -s: update the package.json with any modules that were installed
+* -g: install a module globally. 
+
+### global modules
+node modules can be global. global modules are command line tools OR modules those tools depend on. 
+* On *nix global modules are installed in /usr/local. 
+* On windows module are stored under AppData.
+
+
+
+
