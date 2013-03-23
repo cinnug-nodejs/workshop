@@ -68,7 +68,7 @@ For example the package.json file specifies the module name is circle and the ma
 
 ```javascript
 //package.json
-{ "name" : "cicle",
+{ "name" : "circle",
   "main" : "./lib/circle.js" }
 ```
 
