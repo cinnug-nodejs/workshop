@@ -29,6 +29,7 @@ var request = require('request');
 request('http://google.com/doodle.png').pipe(fs.createWriteStream('doodle.png'))
 ```
 
+request can handle sending multipart content
 
 ```javascript
 var request = require('request')
