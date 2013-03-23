@@ -1,5 +1,7 @@
 # Files
 
+
+## Writing
 ```javascript
 var fs = require('fs');
 fs.unlink('./file*.txt');
