@@ -15,6 +15,16 @@ exports.area = function (r) {
 exports.circumference = function (r) {
   return 2 * PI * r;
 };
+
+function creator() {
+  return function(message) {
+		return {
+			foo: message
+		} 
+	}  
+}
+
+exports.creator = creator;
 ```
 * exports is a special object returned from a module
 * functions or other objects can be directly attached to the exports object.
@@ -24,8 +34,15 @@ The circle module can then be consumed using require.
 
 ```javascript
 var circle = require('./circle.js');
+var Creator = circle.creator();
+var creator1 = new Creator('foo1');
+var creator2 = new Creator('foo2');
+
 console.log( 'The area of a circle of radius 4 is '
   + circle.area(4));
+
+console.log(creator1.foo);
+console.log(creator2.foo);
 ```
 
 ## How modules are resolved?
