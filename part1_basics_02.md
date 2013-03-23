@@ -1,4 +1,4 @@
-# Making an HTTP request
+# Making an HTTP GET request
 
 ```javascript
 var http = require('http');
@@ -24,6 +24,41 @@ Convenience method for doing a GET request.
 * both req and res expose events. (http://nodejs.org/api/http.html#http_http_get_options_callback)
 * _data_ is called when a chunk of data is received
 * _error_ is called if any error error occurs whether DNS resolution, TCP level errors, or actual HTTP errors.
+
+# Making an HTTP POST request
+
+```javascript
+var options = {
+  hostname: 'www.google.com',
+  port: 80,
+  path: '/upload',
+  method: 'POST'
+};
+
+var req = http.request(options, function(res) {
+  console.log('STATUS: ' + res.statusCode);
+  console.log('HEADERS: ' + JSON.stringify(res.headers));
+  res.setEncoding('utf8');
+  res.on('data', function (chunk) {
+    console.log('BODY: ' + chunk);
+  });
+});
+
+req.on('error', function(e) {
+  console.log('problem with request: ' + e.message);
+});
+
+// write data to request body
+req.write('data\n');
+req.write('data\n');
+req.end();
+```
+
+### http.request(options, callback)
+* make any type of http request
+* options - a hash contain all the request information i.e. URI components, HTTP method, headers etc.
+* http.get calls to http.request
+
 
 ### Event emitters
 
