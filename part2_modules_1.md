@@ -34,9 +34,9 @@ console.log( 'The area of a circle of radius 4 is '
 
 Below is the algorithm for resolving non-relative modules. Assume the /root/app/server.js had a require('circle.js'), then node would look in the following folders.
 
-/root/app/node_modules/circle.js
-/root/node_modules/circle.js
-/node_modules/circle.js
+/root/app/node_modules/circle.js <br>
+/root/node_modules/circle.js <br>
+/node_modules/circle.js <br>
 
 ## Side by side versioning
 This model allows different modules to be loaded side by side in the same process.
