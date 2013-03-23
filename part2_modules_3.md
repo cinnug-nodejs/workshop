@@ -72,6 +72,9 @@ app.listen(3000);
 console.log('Listening on port 3000');
 ```
 
+* app.get - specifies a route to listen to and an associated handler.
+* res.send - used for sending JSON objects or strings.
+
 # socket.io
 socket.io is a real time framework for bi-directional communication (http://socket.io)
 
