@@ -100,7 +100,7 @@ io.sockets.on('connection', function (socket) {
 * sockets.on - subscribe to general events
 ```
 
-```jade
+```text
 //index.jade
 doctype 5
 html
