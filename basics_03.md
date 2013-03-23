@@ -56,7 +56,59 @@ fs.createReadStream('./file2.txt', {encoding:'utf8',
 ### fs.createReadStream(path, [options])
 * opens a file for reading and returns a new stream.Readable
 * the _data_ event is fired for each chunk that s read.
-* _error_ fies for any I/O related errors that occur
+* _error_ fires for any I/O related errors that occur
+
+# Streams
+
+* Streams are useful when there is a continuous flow of data in/out.
+* A stream is an abstract emitter interface in node that is implemented by various objects like an HTTP Request, Files, Sockets, etc.
+* Streams wrap a file descriptor
+* node supports both readable and writable streams
+* Streams can be piped together
+* Pre node 0.10 streams are push, in node 0.10 streams are pull by default.
+
+## Readable streams
+### Methods
+* pause: pause a stream
+* resume: resume a paused stream
+* destroy: close the stream
+* pipe: pipe all input to another stream
+
+### Events
+* data: data has been received
+* end: there is no more data
+* error: there was an error receiving data
+* close: the underlying file descriptor has been closed
+
+## Writeable streams
+### Methods
+* write: write to a stream
+* end: terminate the stream
+* destroy: close the stream
+
+###Events
+* drain: the buffer is drained
+* error: there was an error writing data
+* close: the underlying file descriptor has been closed
+* pipe: the stream has been piped
+
+## Piping
+A readable stream can be piped to a writeable stream.
+
+```javascript
+var https = require('https');
+var util = require('util');
+
+req = https.get('https://api.github.com/users/glennblock/repos',onGet); 
+
+function onGet(res) {
+  res.pipe(process.stdout);
+}
+
+req.on('error', function(e) {
+	console.log('problem with request: ' + e.message);
+});
+
 
 
 
