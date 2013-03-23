@@ -55,19 +55,26 @@ e.g:
 
 ## Nesting vs flattening
 * Due to node's async nature, it is very common to chain callbacks together.
-* If you nest callbacks code will get very ugly and hard to maintain such as this:
+* If you nest anonymous callbacks code will get very ugly and hard to maintain such as this:
 
 ```javascript
+  
+
   DoSomething(function(err, result) {
     DoAnotherThing(function(err, result) {
       DoEvenAnotherThing(function(err,result) {
-        //exit
+        exit();
       });
     });
   });
+  
+  function exit() {
+    //...
+  }
+  
 ```
 
-* Instead consider refactoring to functions and pass the functions as the callbacks. 
+* Instead consider refactoring to named functions and pass those functions as the callback. This provides the added benefit of 
 
 ```javascript
   function DidSomething(err, result) {
@@ -83,8 +90,31 @@ e.g:
   }
   
   DoSomething(DidSomething);
+```
+
+* Or next related functions as inner functions
+
+```javascript
+  function ExecuteDoSomething(callback) {
+    function DidSomething(err, result) {
+      DoAnotherThing(DidAnotherThing);
+    }
   
+    function DidAnotherThing(err,result) {
+      DoEventAnotherThing(DidEvenAnotherThing)
+    }
   
+    function DidEvenAnotherThing(err, result) {
+      callback();
+    }
+  
+    DoSomething(DidSomething);
+  }
+
+```
+
+* This provides an adding scoping benefit for example the callback variable above.
+* There are some helpers for making async code easier to manage such as the async module which will be covered later.
 
 
 
