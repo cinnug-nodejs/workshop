@@ -115,3 +115,12 @@ Standard output stream for the process
 * destination: must be a writeable stream.
 * options
   * end: indicates end should be called on the destination stream. Default is true.
+
+## Other things you can do with files
+* fs.rename: rename a file
+* fs.mkdir: create a directory
+* fs.readdir: read the contents of a directory
+* fs.stat: get information about a file
+* fs.symlink: create a shortcut
+* fs.watchFile: monitor file changes
+
