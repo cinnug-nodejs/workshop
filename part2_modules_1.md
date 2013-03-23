@@ -1,5 +1,5 @@
 # Modules
-node has a very simple module system. A module is a javascript file which exports functions or objects. modules can reference other modules.
+node has a very simple module system (http://nodejs.org/api/modules.html). A module is a javascript file which exports functions or objects. modules can reference other modules.
 
 Below is an example of a simple module
 
