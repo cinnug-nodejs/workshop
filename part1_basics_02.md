@@ -13,7 +13,6 @@ function onGet(res) {
   res.on('data', function(chunk) {
     console.log('data:' + chunk);
   });
-}
 ```
 
 ### http.get(options, callback)
