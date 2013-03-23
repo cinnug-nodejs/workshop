@@ -92,7 +92,7 @@ function DidEvenAnotherThing(err, result) {
 DoSomething(DidSomething);
 ```
 
-* Or next related functions as inner functions
+* Or nest related functions as inner functions
 
 ```javascript
 function ExecuteDoSomething(callback) {
