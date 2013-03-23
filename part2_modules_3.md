@@ -55,3 +55,72 @@ request(
   }
  );
 ```
+# express
+express is a Sinatra inspired web framework (http://expressjs.com/guide.html)
+
+Below is an express hello word
+
+```javascript
+var express = require('express');
+var app = express();
+
+app.get('/hello.txt', function(req, res){
+  res.send('Hello World');
+});
+
+app.listen(3000);
+console.log('Listening on port 3000');
+```
+
+# socket.io
+socket.io is a real time framework for bi-directional communication (http://socket.io)
+
+```javascript
+//server.js
+var io = require('socket.io');
+
+io.sockets.on('connection', function (socket) {
+  console.log('connected');
+  setTimeout(function() {
+    socket.emit('greeting', { message: 'Welcome to socketio.on Windows Azure' });
+    socket.on('login', function (data) { 
+      console.log('Logged in user:' + data.user + ' password:' + data.password);
+      setTimeout(function() {
+        socket.emit('message', {message: 'Hello ' + data.user});
+      },300);
+    });
+  }, 300);
+});
+
+* socket.emit - sends a message to the client
+* socket.on - subscribe to specific events from the client
+* sockets.on - subscribe to general events
+
+//index.jade
+doctype 5
+html
+  head
+    script(src='/socket.io/socket.io.js')
+    script(src='http://code.jquery.com/jquery.min.js')
+    script
+      var socket = io.connect();
+      
+      socket.on('greeting', function (data) {
+        $('#greeting').append(data.message + '<br>'); 
+        $('#activity').append("Logging in as 'User'<br>");
+        socket.emit('login', { user: 'User', password: 'pa$$w0rd' });
+      });
+
+      socket.on('message', function(data) {
+        $('#activity').append(data.message + '<br>'); 
+      });
+  #greeting
+  hr
+  #activity
+
+* socket.emit - sends a message to the server
+* socket.on - subscribe to messages coming from the server
+
+
+
+
