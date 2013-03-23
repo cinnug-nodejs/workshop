@@ -78,7 +78,7 @@ console.log('Listening on port 3000');
 # socket.io
 socket.io is a real time framework for bi-directional communication (http://socket.io)
 
-//server.js
+server.js
 ```javascript
 var io = require('socket.io');
 
@@ -100,7 +100,7 @@ io.sockets.on('connection', function (socket) {
 * sockets.on - subscribe to general events
 ```
 
-//index.jade
+index.jade
 ```text
 doctype 5
 html
