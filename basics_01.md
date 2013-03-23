@@ -9,9 +9,9 @@ undefined
 >
 ```
 
-# HELLO WORLD
+# Hello World
 
-```js
+```javascript
 var http = require('http');
 http.createServer(function(req,res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
@@ -19,8 +19,10 @@ http.createServer(function(req,res) {
 }).listen(3000);
 console.log('Listening on port 3000');
 ```
+### json everywhere
+Most APIs accept simple JSON objects, no base class necessary :-)
 
-### Require - used to load modules. More [here](http://nodejs.org/api/)
+### require - used to load modules. More [here](http://nodejs.org/api/)
 Core modules are built in.
   * http/https: HTTP(s) server and clients
   * net: TCP servers and clients
@@ -33,5 +35,58 @@ Creates an HTTP server. Takes a callback which will be invoked on each request.
 * _req, res_ - HTTP request/response object. 
 * _res.writeHead_ - Write all HTTP headers
 * _res.end_ - Write to the body and end.
+* _listen_ - listen on a port. Can also listen to named pipes.
+
+# Callbacks
+* node is designed for writing non-blocking code.
+* 95% of APIs in node are async accepting a callback.
+* The general convention is the first parameter of the callback is an err object. It will be null / undefined if there is no error
+e.g:
+
+  ```javascript
+  fs.fstat(fd, function(err, stats) {…}
+  ```
+
+* Some methods violate this convention like createServer and path.exists e.g.
+
+  ```javascript
+  path.exists (p, function(exists)) {…}
+  ```
+
+## Nesting vs flattening
+* Due to node's async nature, it is very common to chain callbacks together.
+* If you nest callbacks code will get very ugly and hard to maintain such as this:
+
+```javascript
+  DoSomething(function(err, result) {
+    DoAnotherThing(function(err, result) {
+      DoEvenAnotherThing(function(err,result) {
+        //exit
+      });
+    });
+  });
+```
+
+* Instead consider refactoring to functions and pass the functions as the callbacks. 
+
+```javascript
+  function DidSomething(err, result) {
+    DoAnotherThing(DidAnotherThing);
+  }
+  
+  function DidAnotherThing(err,result) {
+    DoEventAnotherThing(DidEvenAnotherThing)
+  }
+  
+  function DidEvenAnotherThing(err, result) {
+    //exit
+  }
+  
+  DoSomething(DidSomething);
+  
+  
+
+
+
 
 
