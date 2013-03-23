@@ -68,6 +68,9 @@ node modules can be global. global modules are command line tools OR modules tho
 npm install -g express
 ```
 
+## npm uninstall 
+uninstalls a module
+
 ## npm ls
 lists all modules that were installed for the app.
 
