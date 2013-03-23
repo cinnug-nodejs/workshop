@@ -120,7 +120,7 @@ html
 
 * socket.emit - sends a message to the server
 * socket.on - subscribe to messages coming from the server
-
+```
 
 
 
