@@ -91,6 +91,14 @@ util.inherits(MyStream, events.EventEmitter);
 MyStream.prototype.write = function(data) {
     this.emit("data", data);
 }
+
+//consume
+var obj = new MyStream();
+obj.on('data', function(data) {
+  console.log(data);
+});
+
+obj.write("hello");
 ```
 
 
